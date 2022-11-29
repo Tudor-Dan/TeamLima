@@ -6,6 +6,16 @@ const getAllStudents = () => {
     display.printData(students, "Students Table:");
 }
 
+const getStudNumber = () => {
+    let count = 0;
+    const students = dataManager.readData("data.json");
+    for (let i = 0; i < students.length;  i++) {
+        count ++;
+    }
+    return count;
+}
+console.log(getStudNumber());
+
 const hasChosen = () => {
     const userOption = display.getInput("Please enter a number: ");
     if (userOption === "1") {
