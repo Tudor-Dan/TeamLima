@@ -6,6 +6,12 @@ const getAllStudents = () => {
     display.printData(students, "Students Table:");
 }
 
+const countClasses = () => {
+    const students = dataManager.readData("data.json");
+    let classes = students.map(s => s['class'])
+    console.log([...new Set(classes)].length)
+}
+
 const hasChosen = () => {
     const userOption = display.getInput("Please enter a number: ");
     if (userOption === "1") {
