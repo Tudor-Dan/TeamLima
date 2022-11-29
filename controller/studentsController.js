@@ -6,6 +6,30 @@ const getAllStudents = () => {
     display.printData(students, "Students Table:");
 }
 
+const countClasses = () => {
+    const students = dataManager.readData("data.json");
+    let classes = students.map(s => s['class'])
+    console.log([...new Set(classes)].length)
+}
+
+const getAllClasses = () => {
+    const students = dataManager.readData("data.json");
+    return new Set(students.map(s => s['class']))
+}
+
+const studentsByClass = () => {
+    let ans = {}
+    const students = dataManager.readData("data.json");
+    let classes = getAllClasses()
+    students.forEach(s => {
+        if(ans[s.class] == undefined)
+            ans[s.class] = 1
+        else
+            ans[s.class]++
+    });
+    console.log(ans)
+}
+
 const hasChosen = () => {
     const userOption = display.getInput("Please enter a number: ");
     if (userOption === "1") {
